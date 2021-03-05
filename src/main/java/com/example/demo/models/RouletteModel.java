@@ -19,9 +19,13 @@ public class RouletteModel {
     @Column(nullable = false, unique = true)
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     Long id;
-    Integer status;
+    String status;
     @OneToMany(mappedBy = "roulette", fetch = FetchType.LAZY, cascade = CascadeType.ALL)
     List<BetModel> bets;
+
+    public RouletteModel(){
+        this.status = "cerrada";
+    }
 
     public Long getId() {
         return id;
@@ -31,11 +35,11 @@ public class RouletteModel {
         this.id = id;
     }
 
-    public Integer getStatus() {
+    public String getStatus() {
         return status;
     }
 
-    public void setStatus(Integer status) {
+    public void setStatus(String status) {
         this.status = status;
     }    
 }

@@ -17,12 +17,23 @@ public class BetModel {
     @Column(nullable = false, unique = true)
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     Long id;
+    Long userId;
     double amount;
     String color;
     Integer num;
-    Integer numericBet;
     @ManyToOne(fetch = FetchType.LAZY)
     RouletteModel roulette;
+
+    public BetModel(Long userId, double amount, String color, Integer num){
+        this.userId = userId;
+        this.amount = amount;
+        this.color = color;
+        this.num = num;
+    }
+
+    BetModel(){
+        
+    }
 
     public Long getId() {
         return id;
@@ -56,14 +67,6 @@ public class BetModel {
         this.num = num;
     }
 
-    public Integer getNumericBet() {
-        return numericBet;
-    }
-
-    public void setNumericBet(Integer numericBet) {
-        this.numericBet = numericBet;
-    }
-
     public RouletteModel getRoulette() {
         return roulette;
     }
@@ -72,5 +75,11 @@ public class BetModel {
         this.roulette = roulette;
     }
 
-    
+	public Long getUserId() {
+		return userId;
+	}
+
+	public void setUserId(Long userId) {
+		this.userId = userId;
+	}
 }
