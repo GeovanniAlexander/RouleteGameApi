@@ -1,45 +1,40 @@
 package com.example.demo.services;
-
 import java.util.ArrayList;
 import java.util.List;
-
 import com.example.demo.models.BetModel;
 import com.example.demo.models.RouletteModel;
 import com.example.demo.repositories.BetRepository;
 import com.example.demo.repositories.RouletteRepository;
-
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
-
 @Service
 public class RouletteService {
-    
     @Autowired
     RouletteRepository rouletteRepository;
-
     @Autowired
     BetRepository betRepository;
-
     public Iterable<RouletteModel> getRoulettes(){
+
         return rouletteRepository.findAll();
     }
-
     public RouletteModel saveRoulette( RouletteModel roulette){
+
         return rouletteRepository.save(roulette);
     }
-
     public RouletteModel activateRoulette(Long id){
         RouletteModel roulette = rouletteRepository.findById(id).orElse(null);
-        if(roulette == null)
+        if(roulette == null){
+
             return roulette;
+        }
         roulette.setStatus("abierta");
+
         return rouletteRepository.save(roulette);
     }
-
     public RouletteModel findById(Long id){
+
         return rouletteRepository.findById(id).orElse(null);
     }
-
     public List<BetModel> closeRoulette(Long id){
         RouletteModel roulette = rouletteRepository.findById(id).orElse(null);
         Integer winNumber = (int) (Math.random() * 36);
@@ -50,9 +45,9 @@ public class RouletteService {
         });
         roulette.setStatus("cerrada");
         saveRoulette(roulette);
+
         return bets;
     }
-
     public BetModel validateBet(BetModel bet, Integer winNum, String winColor){
         Integer num = bet.getNum();
         String color = bet.getColor();
@@ -67,6 +62,7 @@ public class RouletteService {
         else
             bet.setAmount(0);
         betRepository.delete(bet);
+
         return bet;
     }
 }
