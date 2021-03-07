@@ -35,7 +35,7 @@
 > "num" and "color" are optional but one must be present   
 > "num" must be between 0 and 36  
 > "color" must be 'rojo' or 'negro'  
-> "amount" must be between 1 and 10000
+> "amount" must be between 1 and 10000  
 > the roulette "id" must be exist and its status must be 'abierta'  
 ### Make a bet:
 >host:8080/bet/close/{id}  
@@ -43,7 +43,7 @@
 ```json
 [
     {
-        "id": 20,
+        "id": 1,
         "userId": 3,
         "amount": 1800,
         "color": "rojo",
@@ -54,7 +54,7 @@
         }
     },
     {
-        "id": 21,
+        "id": 2,
         "userId": 3,
         "amount": 0.0,
         "color": "negro",
