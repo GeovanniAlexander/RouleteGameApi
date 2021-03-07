@@ -37,7 +37,7 @@
 > "color" must be 'rojo' or 'negro'  
 > "amount" must be between 1 and 10000  
 > the roulette "id" must be exist and its status must be 'abierta'  
-### Make a bet:
+### Close a roulette:
 >host:8080/bet/close/{id}  
 >The roulette id is a path variable and return a roulette bet list with the result as the follow example
 ```json
